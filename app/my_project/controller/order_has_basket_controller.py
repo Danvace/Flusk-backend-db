@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from app.my_project.domain.dto import OrderHasBasketDto
 from app.my_project.service.order_has_basket_service import OrderHasBasketService
-from app import app
+from app.app_start import app,db
 
-order_has_basket_service = OrderHasBasketService()
+order_has_basket_service = OrderHasBasketService(db)
 
 @app.route('/order_has_basket', methods=['POST'])
 def create_order_has_basket():

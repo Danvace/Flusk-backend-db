@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from app.my_project.domain.dto import ReviewDto
 from app.my_project.service.review_service import ReviewService
-from app import app
+from app.app_start import app, db
 
-review_service = ReviewService()
+review_service = ReviewService(db)
 
 @app.route('/reviews', methods=['POST'])
 def create_review():

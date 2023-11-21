@@ -1,6 +1,5 @@
 from config import Config
-from flask import Flask, render_template, request
-import psycopg2
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 

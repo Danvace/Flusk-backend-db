@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from app.my_project.domain.dto import ImageDto
 from app.my_project.service.image_service import ImageService
-from app import app
+from app.app_start import app, db
 
-image_service = ImageService()
+image_service = ImageService(db)
 
 @app.route('/images', methods=['POST'])
 def create_image():

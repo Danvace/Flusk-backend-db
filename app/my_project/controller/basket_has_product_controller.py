@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
 from app.my_project.auth.domain.i_dto import BasketHasProductService, BasketHasProductDto
-from app import app
+from app.app_start import app,db
 
-basket_has_product_service = BasketHasProductService()
+basket_has_product_service = BasketHasProductService(db)
 
 @app.route('/basket_has_products', methods=['POST'])
 def create_basket_has_product():

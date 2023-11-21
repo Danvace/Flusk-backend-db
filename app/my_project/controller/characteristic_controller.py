@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
+
+from app.app_start import db
 from app.my_project.domain.dto import CharacteristicDto
 from app.my_project.service.characteristic_service import CharacteristicService
-from app import app
+from app.app_start import app
 
-characteristic_service = CharacteristicService()
+characteristic_service = CharacteristicService(db=db)
 
 @app.route('/characteristics', methods=['POST'])
 def create_characteristic():

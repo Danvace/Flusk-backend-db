@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from app.my_project.domain.dto import CategoryDto
 from app.my_project.service.category_service import CategoryService
-from app import app
+from app.app_start import app,db
 
-category_service = CategoryService()
+category_service = CategoryService(db)
 
 @app.route('/categories', methods=['POST'])
 def create_category():

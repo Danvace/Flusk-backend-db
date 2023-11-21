@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from app.my_project.domain.dto import DeliveryTypeDto
 from app.my_project.service.delivery_type_service import DeliveryTypeService
-from app import app
+from app.app_start import app, db
 
-delivery_type_service = DeliveryTypeService()
+delivery_type_service = DeliveryTypeService(db)
 
 @app.route('/delivery_types', methods=['POST'])
 def create_delivery_type():

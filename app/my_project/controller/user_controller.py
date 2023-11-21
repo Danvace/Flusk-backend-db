@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from app.my_project.domain.dto import UserDto
 from app.my_project.service.user_service import UserService
-from app import app
+from app.app_start import app, db
 
-user_service = UserService()
+user_service = UserService(db=db)
 
 @app.route('/users', methods=['POST'])
 def create_user():

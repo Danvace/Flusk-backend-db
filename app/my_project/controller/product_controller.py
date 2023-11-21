@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from app.my_project.domain.dto import ProductDto
 from app.my_project.service.product_service import ProductService
-from app import app
+from app.app_start import app, db
 
-product_service = ProductService()
+product_service = ProductService(db )
 
 @app.route('/products', methods=['POST'])
 def create_product():

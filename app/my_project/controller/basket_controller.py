@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from app.my_project.domain.dto import BasketDto
 from app.my_project.service.basket_service import BasketService
-from app import app
+from app.app_start import app, db
 
-basket_service = BasketService()
+basket_service = BasketService(db)
 
 @app.route('/baskets', methods=['POST'])
 def create_basket():

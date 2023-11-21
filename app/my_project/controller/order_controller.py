@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from app.my_project.domain.dto import OrderDto
 from app.my_project.service.order_service import OrderService
-from app import app
+from app.app_start import app, db
 
-order_service = OrderService()
+order_service = OrderService(db)
 
 @app.route('/orders', methods=['POST'])
 def create_order():

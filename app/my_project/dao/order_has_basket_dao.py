@@ -1,3 +1,5 @@
+from typing import Type
+
 from sqlalchemy.orm import Session
 from app.my_project.model.models import OrderHasBasket
 
@@ -5,7 +7,7 @@ class OrderHasBasketDAO:
     def __init__(self, session: Session):
         self.session = session
 
-    def get(self, id: int) -> OrderHasBasket:
+    def get(self, id: int) -> Type[OrderHasBasket] | None:
         return self.session.query(OrderHasBasket).filter_by(id=id).first()
 
     def create(self, order_has_basket: OrderHasBasket) -> None:

@@ -1,3 +1,5 @@
+from typing import Type
+
 from app.my_project.model.models import Category
 from sqlalchemy.orm import Session
 
@@ -6,7 +8,7 @@ class CategoryDAO:
     def __init__(self, session: Session):
         self.session = session
 
-    def get(self, name: str) -> Category:
+    def get(self, name: str) -> Type[Category] | None:
         return self.session.query(Category).filter_by(name=name).first()
 
     def create(self, category: Category) -> None:

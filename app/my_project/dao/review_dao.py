@@ -1,3 +1,5 @@
+from typing import Type
+
 from sqlalchemy.orm import Session
 from app.my_project.model.models import Review
 
@@ -5,7 +7,7 @@ class ReviewDAO:
     def __init__(self, session: Session):
         self.session = session
 
-    def get(self, id: int) -> Review:
+    def get(self, id: int) -> Type[Review] | None:
         return self.session.query(Review).filter_by(id=id).first()
 
     def create(self, review: Review) -> None:

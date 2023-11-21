@@ -1,3 +1,5 @@
+from typing import Type
+
 from sqlalchemy.orm import Session
 from app.my_project.model.models import Characteristic
 
@@ -5,7 +7,7 @@ class CharacteristicDAO:
     def __init__(self, session: Session):
         self.session = session
 
-    def get(self, id: int) -> Characteristic:
+    def get(self, id: int) -> Type[Characteristic] | None:
         return self.session.query(Characteristic).filter_by(id=id).first()
 
     def create(self, characteristic: Characteristic) -> None:
